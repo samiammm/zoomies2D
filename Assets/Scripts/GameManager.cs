@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         playerStartPoint = player.transform.position;
         platformGenerationStartPoint = platformGenerator.transform.position;
-        gameOverMenu.SetActive(false);
+        gameOverMenu.SetActive(false); 
         mainMenu.SetActive(true);
         player.gameObject.SetActive(false);
         scoreManager.isScoreIncreasing = false;
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         backgroundMusic.Play();
         scoreManager.score = 0;
         scoreManager.isScoreIncreasing = true;
+        scoreManager.lastPosition = player.transform.position;
     }
 
     public void GameOver()
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         backgroundMusic.Play();
         scoreManager.score = 0;
         scoreManager.isScoreIncreasing = true;
+        scoreManager.lastPosition = player.transform.position; 
     }
     public void Quit()
     {

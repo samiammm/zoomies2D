@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
 
+    public Transform player;
+
+    public Vector3 lastPosition;
+    private float totalDistance;
+
     public float score;
     private float hiScore;
-    public float pointsPerSec;
+//    public float pointsPerSec;
     public Text scoreText;
     public Text hiScoreText;
 
@@ -26,8 +31,17 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+        float distanceTraveled = Vector3.Distance(lastPosition, player.position);
+
+        totalDistance += distanceTraveled;
+
+        lastPosition = player.position;
+
         if(isScoreIncreasing) {
-            score += pointsPerSec * Time.deltaTime;
+//            score += pointsPerSec * Time.deltaTime;
+            score += distanceTraveled;
         }
         
         if(score > hiScore) {
